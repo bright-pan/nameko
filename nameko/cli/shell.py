@@ -7,7 +7,7 @@ from nameko.constants import AMQP_URI_CONFIG_KEY
 from nameko.standalone.events import event_dispatcher
 from nameko.standalone.rpc import ClusterRpcClient
 
-from .utils import interact
+from .utils.code import interact
 
 
 SHELLS = ["bpython", "ipython", "plain"]

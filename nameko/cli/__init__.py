@@ -3,7 +3,7 @@ import click
 from nameko import config
 from nameko.exceptions import CommandError, ConfigurationError
 
-from .utils import setup_config
+from .utils.config import setup_config
 from .click_arguments import argument_services
 from .click_options import (
     option_broker,
@@ -56,7 +56,6 @@ positional arguments:
         python path to one or more service classes to run
     """
 
-    from .run import main
 
     try:
         setup_config(config_file, define, broker)
@@ -64,6 +63,7 @@ positional arguments:
             host, port = backdoor_port
             msg = "To connect to backdoor: `$ telnet {host} {port}`"
             click.echo(msg.format(host=host, port=port))
+        from .run import main
         main(services, backdoor_port)
     except (CommandError, ConfigurationError) as exc:
         click.echo("Error: {}".format(exc))
@@ -77,7 +77,6 @@ positional arguments:
 @option_config_file()
 @option_define()
 def shell(broker, interface, config_file, define):
-    from .shell import main
-
     setup_config(config_file, define, broker)
+    from .shell import main
     main(interface)

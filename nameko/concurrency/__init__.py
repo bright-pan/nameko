@@ -65,9 +65,9 @@ if mode == 'eventlet':  # pragma: no cover
 
 elif mode == 'gevent':  # pragma: no cover
     try:
-        import eventlet  # noqa: F401
+        import gevent  # noqa: F401
     except ImportError as e:
-        raise type(e)('Could not import eventlet. '
+        raise type(e)('Could not import gevent. '
                       'Try installing concurrency backend by running '
                       '`pip install nameko[gevent]`.')
 

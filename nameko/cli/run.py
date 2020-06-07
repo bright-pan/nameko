@@ -11,7 +11,7 @@ import sys
 
 from nameko.concurrency import setup_backdoor, wait, spawn, spawn_n
 from nameko import config
-from nameko.cli.utils import import_services
+from nameko.cli.utils.import_services import import_services
 from nameko.runners import ServiceRunner
 
 
